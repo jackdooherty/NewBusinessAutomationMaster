@@ -15,7 +15,7 @@ public class LoginSteps extends BaseClass {
     @Before
     public void SetUp()
     {
-        BaseClass.setDriver();
+        BaseClass.setChromeDriver();
     }
 
     @After

@@ -12,9 +12,19 @@ public class BaseClass {
     public static NgWebDriver ngWebDriver;
     public static JavascriptExecutor jsDriver;
 
-    public static void setDriver(){
+    public static void setChromeDriver(){
         System.setProperty("webdriver.chrome.driver", "C://driver//chromedriver//chromedriver.exe");
         driver = new ChromeDriver();
+        driver.manage().window().maximize();
+
+        jsDriver = (JavascriptExecutor)driver;
+        ngWebDriver = new NgWebDriver(jsDriver);
+        ngWebDriver.waitForAngularRequestsToFinish();
+    }
+
+    public static void setFireFoxDriver(){
+        System.setProperty("webdriver.gecko.driver", "C://driver//geckodriver//geckodriver.exe");
+        driver = new FirefoxDriver();
         driver.manage().window().maximize();
 
         jsDriver = (JavascriptExecutor)driver;
