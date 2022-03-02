@@ -16,7 +16,7 @@ public class LoginPage extends BaseClass {
         WebElement usernameField = wait.until(presenceOfElementLocated(By.name("username")));
         usernameField.sendKeys("LC");
         WebElement passwordField = driver.findElement(By.name("password"));
-        passwordField.sendKeys("Nucnew123");
+        passwordField.sendKeys("Genpact2016");
     }
 
     public static void SubmitDetails() throws InterruptedException {
