@@ -1,6 +1,9 @@
 package pageObjects.Login;
 
+import net.jodah.failsafe.internal.util.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pageObjects.BaseClass;
@@ -16,7 +19,7 @@ public class LoginPage extends BaseClass {
         WebElement usernameField = wait.until(presenceOfElementLocated(By.name("username")));
         usernameField.sendKeys("LC");
         WebElement passwordField = driver.findElement(By.name("password"));
-        passwordField.sendKeys("Genpact2016");
+        passwordField.sendKeys("Genpact2022");
     }
 
     public static void SubmitDetails() throws InterruptedException {
@@ -28,8 +31,15 @@ public class LoginPage extends BaseClass {
         //Thread.sleep(20000);
         //driver.switchTo().frame("lpSS_32791885408");
         //utils.waitForCondition(presenceOfElementLocated(ByAngular.buttonText(" Client category and adviser ")),20);
-        Utils utils = new Utils();
-        utils.waitForCondition(presenceOfElementLocated(By.id("mat-select-value-1")),30);
+        //Utils utils = new Utils();
+        //utils.waitForCondition(presenceOfElementLocated(By.id("mat-select-value-1")),30);
+        Thread.sleep(5000);
+
+        WebElement shadowDomHostElement = driver.findElement(By.cssSelector(".webcomponent"));
+        SearchContext last = (SearchContext) ((JavascriptExecutor) driver).executeScript("return arguments[0].shadowRoot", shadowDomHostElement);
+
+        last.findElement(By.id("mat-radio-6")).click();
+        Thread.sleep(2000);
     }
 
     public void provideInvalidDetails()

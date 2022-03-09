@@ -20,7 +20,7 @@ public class LoginSteps extends BaseClass {
 
     @After
     public void TearDown(){
-        BaseClass.closeDriver();
+        //BaseClass.closeDriver();
     }
 
     //Scenario 1
