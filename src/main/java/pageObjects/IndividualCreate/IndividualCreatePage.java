@@ -257,16 +257,14 @@ public class IndividualCreatePage extends BaseClass {
 
         last.findElement(By.id("mat-radio-9")).click();
         last.findElement(By.id("mat-checkbox-19")).click();
-        assert (taxResidencyCheckBox.isSelected());
     }
 
     public void selectContactDetailsSection() throws InterruptedException {
         WebElement shadowDomHostElement = driver.findElement(By.cssSelector(".webcomponent"));
         SearchContext last = (SearchContext) ((JavascriptExecutor) driver).executeScript("return arguments[0].shadowRoot", shadowDomHostElement);
 
-        Thread.sleep(2000);
+        Thread.sleep(3000);
         last.findElement(By.cssSelector("[data-testid='menu-contact-li']")).click();
-        assert(postCodeField.isDisplayed());
     }
 
     public void provideContactDetails() throws InterruptedException
@@ -274,7 +272,7 @@ public class IndividualCreatePage extends BaseClass {
         WebElement shadowDomHostElement = driver.findElement(By.cssSelector(".webcomponent"));
         SearchContext last = (SearchContext) ((JavascriptExecutor) driver).executeScript("return arguments[0].shadowRoot", shadowDomHostElement);
 
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         last.findElement(By.id("mat-input-7")).sendKeys("G78 2PN");
         Thread.sleep(1000);
         last.findElement(By.cssSelector("[data-testid='find-address-button']")).click();
@@ -306,7 +304,6 @@ public class IndividualCreatePage extends BaseClass {
         Thread.sleep(1000);
         last.findElement(By.cssSelector("[data-testid='menu-bankAccount-li']"));
         Thread.sleep(1000);
-        assert(accountHolderName.isDisplayed());
     }
 
     public void provideBankAccountDetails()
@@ -330,7 +327,6 @@ public class IndividualCreatePage extends BaseClass {
 
         Thread.sleep(1000);
         last.findElement(By.cssSelector("[data-testid='menu-bankAccount-li']"));
-        assert(nucleusGoCheckBox.isDisplayed());
     }
 
     public void selectNucleusGoAccess() throws InterruptedException
@@ -342,7 +338,6 @@ public class IndividualCreatePage extends BaseClass {
         last.findElement(By.id("mat-checkbox-2")).isSelected();
         last.findElement(By.id("mat-checkbox-3")).isSelected();
         last.findElement(By.id("mat-checkbox-4")).click();
-        assert(memoAssetsCheckBox.isSelected());
     }
 
     public void selectCorrespondencePreferencesSection() throws InterruptedException {
@@ -351,7 +346,6 @@ public class IndividualCreatePage extends BaseClass {
 
         Thread.sleep(1000);
         last.findElement(By.cssSelector("[data-testid='menu-correspondence-li']")).click();
-        assert(allCorrespondenceCheckBox.isDisplayed());
     }
 
     public void selectAllCorrespondence() throws InterruptedException {

@@ -17,9 +17,9 @@ public class BaseClass {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
 
-        jsDriver = (JavascriptExecutor)driver;
-        ngWebDriver = new NgWebDriver(jsDriver);
-        ngWebDriver.waitForAngularRequestsToFinish();
+        //jsDriver = (JavascriptExecutor)driver;
+        //ngWebDriver = new NgWebDriver(jsDriver);
+        //ngWebDriver.waitForAngularRequestsToFinish();
     }
 
     public static void setFireFoxDriver(){

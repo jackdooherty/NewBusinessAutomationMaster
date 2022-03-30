@@ -4,10 +4,10 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = "C://Users//jdoher//IdeaProjects//NewBusinessAutomationMaster//src//test//resources",
+        features = "src/test/resources",
         glue = "StepDefinitions",
-        plugin = {"pretty", "html:test-output",
-                "rerun:target/rerun.txt"}
+        plugin = {"pretty", "html:target/cucumber-reports/cucumber.html",
+        "json:target/cucumber-reports/cucumber.json"}
 )
 
 public class TestRunner {

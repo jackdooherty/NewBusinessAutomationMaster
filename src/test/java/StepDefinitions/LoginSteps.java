@@ -15,12 +15,13 @@ public class LoginSteps extends BaseClass {
     @Before
     public void SetUp()
     {
+        //BaseClass.setFireFoxDriver();
         BaseClass.setChromeDriver();
     }
 
     @After
     public void TearDown(){
-        //BaseClass.closeDriver();
+        BaseClass.closeDriver();
     }
 
     //Scenario 1
@@ -66,7 +67,7 @@ public class LoginSteps extends BaseClass {
     }
 
     @Then("they should see an error message displayed")
-    public void they_should_see_an_error_message_displayed() {
+    public void they_should_see_an_error_message_displayed() throws InterruptedException {
         LoginPage loginPage = new LoginPage();
         loginPage.waitForLoginError();
     }

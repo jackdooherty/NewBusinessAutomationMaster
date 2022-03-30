@@ -1,5 +1,5 @@
 Feature: Individual Create page
-  Scenario: User creates new individual client successfully
+  Scenario: User creates new individual client
     Given a user logs in successfully
     And arrives on the Individual create page
     When the user provides valid client details

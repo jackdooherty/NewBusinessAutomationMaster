@@ -1,6 +1,5 @@
 package pageObjects.Login;
 
-import net.jodah.failsafe.internal.util.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.SearchContext;
@@ -19,7 +18,7 @@ public class LoginPage extends BaseClass {
         WebElement usernameField = wait.until(presenceOfElementLocated(By.name("username")));
         usernameField.sendKeys("LC");
         WebElement passwordField = driver.findElement(By.name("password"));
-        passwordField.sendKeys("Genpact2022");
+        passwordField.sendKeys("Nucleus2022");
     }
 
     public static void SubmitDetails() throws InterruptedException {
@@ -52,10 +51,11 @@ public class LoginPage extends BaseClass {
         passwordField.sendKeys("123123");
     }
 
-    public void waitForLoginError()
-    {
-        Utils utils = new Utils();
-        utils.waitForCondition(presenceOfElementLocated(By.xpath("//span[contains(text(),'The login details supplied were incorrect. If you're a client trying to access Nucleus Go, please use the link on the left.')]")), 30);
+    public void waitForLoginError() throws InterruptedException {
+        WebElement shadowDomHostElement = driver.findElement(By.cssSelector(".webcomponent"));
+        SearchContext last = (SearchContext) ((JavascriptExecutor) driver).executeScript("return arguments[0].shadowRoot", shadowDomHostElement);
+        Thread.sleep(4000);
+        last.findElement(By.xpath("//span[contains(text(),'The login details supplied were incorrect. If you're a client trying to access Nucleus Go, please use the link on the left.')]"));
     }
 
 }
