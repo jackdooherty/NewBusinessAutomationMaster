@@ -1,4 +1,5 @@
 Feature: Individual Create page
+  @Individual1
   Scenario: User creates new individual client
     Given a user logs in successfully
     And arrives on the Individual create page

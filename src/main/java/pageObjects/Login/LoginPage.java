@@ -1,9 +1,9 @@
 package pageObjects.Login;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.SearchContext;
-import org.openqa.selenium.WebElement;
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
+import io.cucumber.java.Scenario;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pageObjects.BaseClass;
 import pageObjects.Utils;
@@ -11,6 +11,7 @@ import pageObjects.Utils;
 import static org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElementLocated;
 
 public class LoginPage extends BaseClass {
+
 
     public static void provideValidDetails()
     {

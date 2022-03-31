@@ -2,10 +2,13 @@ package StepDefinitions;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import io.cucumber.java.Scenario;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import pageObjects.BaseClass;
 import pageObjects.IndividualCreate.IndividualCreatePage;
 import pageObjects.Login.LoginPage;
@@ -21,7 +24,13 @@ public class IndividualCreateSteps extends BaseClass{
     }
 
     @After
-    public void TearDown(){
+    public void TearDown(Scenario scenario){
+        if (scenario.isFailed()) {
+            TakesScreenshot ts = (TakesScreenshot) driver;
+            byte[] src = ts.getScreenshotAs(OutputType.BYTES);
+            scenario.attach(src,"image/png","screenshot");
+        }
+
         BaseClass.closeDriver();
     }
 

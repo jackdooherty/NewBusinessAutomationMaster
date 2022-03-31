@@ -1,9 +1,9 @@
 package pageObjects.IndividualCreate;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.SearchContext;
-import org.openqa.selenium.WebElement;
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
+import io.cucumber.java.Scenario;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Wait;
@@ -176,6 +176,7 @@ public class IndividualCreatePage extends BaseClass {
 
     @FindBy(css = "[data-testid='menu-summary-button']")
     private WebElement applyButton;
+
 
     public void selectClientAdviser() throws InterruptedException
     {

@@ -1,4 +1,5 @@
 Feature: Web login
+  @Login1
   Scenario: User provides valid details
     Given a user navigates to the home page
     When they provide valid details

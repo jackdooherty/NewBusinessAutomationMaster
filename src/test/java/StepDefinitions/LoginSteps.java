@@ -2,15 +2,17 @@ package StepDefinitions;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import io.cucumber.java.Scenario;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import pageObjects.BaseClass;
 import pageObjects.Login.LoginPage;
 import pageObjects.PageNavigation;
 
 public class LoginSteps extends BaseClass {
-
 
     @Before
     public void SetUp()
@@ -19,8 +21,15 @@ public class LoginSteps extends BaseClass {
         BaseClass.setChromeDriver();
     }
 
+
     @After
-    public void TearDown(){
+    public void TearDown(Scenario scenario){
+        if (scenario.isFailed()) {
+            TakesScreenshot ts = (TakesScreenshot) driver;
+            byte[] src = ts.getScreenshotAs(OutputType.BYTES);
+            scenario.attach(src,"image/png","screenshot");
+        }
+
         BaseClass.closeDriver();
     }
 
