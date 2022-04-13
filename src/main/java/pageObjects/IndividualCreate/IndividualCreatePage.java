@@ -300,16 +300,22 @@ public class IndividualCreatePage extends BaseClass {
         last.findElement(By.id("mat-input-9")).sendKeys("G78 2PN");
         Thread.sleep(1000);
         last.findElement(By.cssSelector("[data-testid='find-address-button']")).click();
-        Thread.sleep(1000);
+
+        Thread.sleep(3000);
         last.findElement(By.id("mat-select-14")).click();
+
+        //WebDriverWait wait = new WebDriverWait(driver, 10);
+        //wait.until(ExpectedConditions.elementToBeClickable(addressOptions));
+        //addressOptions.click();
+
         Thread.sleep(1000);
         last.findElement(By.id("mat-option-4451")).click();
-        Thread.sleep(1000);
+        Thread.sleep(500);
 
         last.findElement(By.id("mat-select-value-9")).click();
-        Thread.sleep(1000);
+        Thread.sleep(500);
         last.findElement(By.id("mat-option-1")).click();
-        Thread.sleep(1000);
+        Thread.sleep(500);
 
         //House Phone Number
         Random objGenerator = new Random();
@@ -384,7 +390,7 @@ public class IndividualCreatePage extends BaseClass {
         WebElement shadowDomHostElement = driver.findElement(By.cssSelector(".webcomponent"));
         SearchContext last = (SearchContext) ((JavascriptExecutor) driver).executeScript("return arguments[0].shadowRoot", shadowDomHostElement);
 
-        Thread.sleep(5000);
+        Thread.sleep(2000);
         last.findElement(By.cssSelector("[data-testid='next-button']")).click();
     }
 
@@ -392,7 +398,7 @@ public class IndividualCreatePage extends BaseClass {
         WebElement shadowDomHostElement = driver.findElement(By.cssSelector(".webcomponent"));
         SearchContext last = (SearchContext) ((JavascriptExecutor) driver).executeScript("return arguments[0].shadowRoot", shadowDomHostElement);
 
-        Thread.sleep(5000);
+        Thread.sleep(2000);
         last.findElement(By.cssSelector("[data-testid='menu-summary-button']")).click();
     }
 
@@ -400,7 +406,7 @@ public class IndividualCreatePage extends BaseClass {
         WebElement shadowDomHostElement = driver.findElement(By.cssSelector(".webcomponent"));
         SearchContext last = (SearchContext) ((JavascriptExecutor) driver).executeScript("return arguments[0].shadowRoot", shadowDomHostElement);
 
-        Thread.sleep(6000);
+        Thread.sleep(2000);
         last.findElement(By.cssSelector("[data-testid='menu-start-app-button']")).isDisplayed();
     }
 
