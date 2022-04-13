@@ -1,19 +1,16 @@
 package pageObjects.IndividualCreate;
 
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
-import io.cucumber.java.Scenario;
-import org.openqa.selenium.*;
-import org.openqa.selenium.interactions.Actions;
+import org.junit.Assert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.SearchContext;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.Wait;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import pageObjects.BaseClass;
-import pageObjects.Utils;
+import platformAcceptance.BaseClass;
+
 import java.util.Random;
 
-import static org.openqa.selenium.support.ui.ExpectedConditions.elementToBeClickable;
-import static org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElementLocated;
+
 
 public class IndividualCreatePage extends BaseClass {
 
@@ -182,6 +179,7 @@ public class IndividualCreatePage extends BaseClass {
     {
         WebElement shadowDomHostElement = driver.findElement(By.cssSelector(".webcomponent"));
         SearchContext last = (SearchContext) ((JavascriptExecutor) driver).executeScript("return arguments[0].shadowRoot", shadowDomHostElement);
+
         Thread.sleep(2000);
         last.findElement(By.id("mat-select-value-1")).click();
         Thread.sleep(1000);
@@ -192,6 +190,7 @@ public class IndividualCreatePage extends BaseClass {
     {
         WebElement shadowDomHostElement = driver.findElement(By.cssSelector(".webcomponent"));
         SearchContext last = (SearchContext) ((JavascriptExecutor) driver).executeScript("return arguments[0].shadowRoot", shadowDomHostElement);
+
         Thread.sleep(1000);
         last.findElement(By.cssSelector("[data-testid='menu-personal-li']")).click();
         Thread.sleep(1000);
@@ -201,6 +200,7 @@ public class IndividualCreatePage extends BaseClass {
     {
         WebElement shadowDomHostElement = driver.findElement(By.cssSelector(".webcomponent"));
         SearchContext last = (SearchContext) ((JavascriptExecutor) driver).executeScript("return arguments[0].shadowRoot", shadowDomHostElement);
+
         Thread.sleep(1000);
         last.findElement(By.id("mat-select-value-3")).click();
         Thread.sleep(1000);
@@ -228,12 +228,13 @@ public class IndividualCreatePage extends BaseClass {
     public void selectNationalityResidencySection() throws InterruptedException {
         WebElement shadowDomHostElement = driver.findElement(By.cssSelector(".webcomponent"));
         SearchContext last = (SearchContext) ((JavascriptExecutor) driver).executeScript("return arguments[0].shadowRoot", shadowDomHostElement);
+
         Thread.sleep(1000);
         last.findElement(By.cssSelector("[data-testid='menu-nationality-li']")).click();
         Thread.sleep(1000);
     }
 
-    public void provideNationalityAndResidencyDetails() throws InterruptedException {
+    public void provideNationalityAndResidencyDetailsOutwithUK() throws InterruptedException {
         WebElement shadowDomHostElement = driver.findElement(By.cssSelector(".webcomponent"));
         SearchContext last = (SearchContext) ((JavascriptExecutor) driver).executeScript("return arguments[0].shadowRoot", shadowDomHostElement);
 
@@ -248,7 +249,7 @@ public class IndividualCreatePage extends BaseClass {
 
         last.findElement(By.id("mat-select-value-13")).click();
         Thread.sleep(1000);
-        last.findElement(By.id("mat-option-84")).click();
+        last.findElement(By.id("mat-option-81")).click();
         Thread.sleep(1000);
 
         //Tax ID Number
@@ -260,11 +261,33 @@ public class IndividualCreatePage extends BaseClass {
         last.findElement(By.id("mat-checkbox-19")).click();
     }
 
+    public void provideNationalityDetailsWithinUk() throws InterruptedException {
+        WebElement shadowDomHostElement = driver.findElement(By.cssSelector(".webcomponent"));
+        SearchContext last = (SearchContext) ((JavascriptExecutor) driver).executeScript("return arguments[0].shadowRoot", shadowDomHostElement);
+
+        last.findElement(By.id("mat-input-19")).click();
+
+        //National Insurance Number
+        Random objGenerator = new Random();
+        int int1 = objGenerator.nextInt(999999);
+        String nationalNumber = String.valueOf(int1);
+        last.findElement(By.id("mat-input-19")).sendKeys("AC" + nationalNumber + "C");
+        Thread.sleep(1000);
+
+        WebElement taxResidency = last.findElement(By.cssSelector("[data-testid='tax-residency-select']"));
+        String expectedTaxResidency = "United Kingdom";
+        Assert.assertEquals(taxResidency.getText(), expectedTaxResidency);
+
+        WebElement countryOfResidence = last.findElement(By.cssSelector("[data-testid='nationality-country-of-residence-form-select']"));
+        String expectedCountryResidency = "United Kingdom";
+        Assert.assertEquals(countryOfResidence.getText(), expectedCountryResidency);
+    }
+
     public void selectContactDetailsSection() throws InterruptedException {
         WebElement shadowDomHostElement = driver.findElement(By.cssSelector(".webcomponent"));
         SearchContext last = (SearchContext) ((JavascriptExecutor) driver).executeScript("return arguments[0].shadowRoot", shadowDomHostElement);
 
-        Thread.sleep(3000);
+        Thread.sleep(4000);
         last.findElement(By.cssSelector("[data-testid='menu-contact-li']")).click();
     }
 
@@ -274,13 +297,13 @@ public class IndividualCreatePage extends BaseClass {
         SearchContext last = (SearchContext) ((JavascriptExecutor) driver).executeScript("return arguments[0].shadowRoot", shadowDomHostElement);
 
         Thread.sleep(2000);
-        last.findElement(By.id("mat-input-7")).sendKeys("G78 2PN");
+        last.findElement(By.id("mat-input-9")).sendKeys("G78 2PN");
         Thread.sleep(1000);
         last.findElement(By.cssSelector("[data-testid='find-address-button']")).click();
         Thread.sleep(1000);
         last.findElement(By.id("mat-select-14")).click();
         Thread.sleep(1000);
-        last.findElement(By.id("mat-option-4641")).click();
+        last.findElement(By.id("mat-option-4451")).click();
         Thread.sleep(1000);
 
         last.findElement(By.id("mat-select-value-9")).click();
@@ -292,7 +315,7 @@ public class IndividualCreatePage extends BaseClass {
         Random objGenerator = new Random();
         int int2 = objGenerator.nextInt(1111111111);
         String phoneNumber = String.valueOf(int2);
-        last.findElement(By.id("mat-input-9")).sendKeys(phoneNumber);
+        last.findElement(By.id("mat-input-8")).sendKeys(phoneNumber);
 
         last.findElement(By.id("mat-input-10")).sendKeys("test1@gmail.com");
         last.findElement(By.id("mat-input-11")).sendKeys("test1@gmail.com");
@@ -377,7 +400,7 @@ public class IndividualCreatePage extends BaseClass {
         WebElement shadowDomHostElement = driver.findElement(By.cssSelector(".webcomponent"));
         SearchContext last = (SearchContext) ((JavascriptExecutor) driver).executeScript("return arguments[0].shadowRoot", shadowDomHostElement);
 
-        Thread.sleep(5000);
+        Thread.sleep(6000);
         last.findElement(By.cssSelector("[data-testid='menu-start-app-button']")).isDisplayed();
     }
 

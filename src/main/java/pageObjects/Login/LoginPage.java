@@ -1,12 +1,9 @@
 package pageObjects.Login;
 
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
-import io.cucumber.java.Scenario;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import pageObjects.BaseClass;
-import pageObjects.Utils;
+import platformAcceptance.BaseClass;
+import platformAcceptance.Utils;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElementLocated;
 
@@ -19,7 +16,7 @@ public class LoginPage extends BaseClass {
         WebElement usernameField = wait.until(presenceOfElementLocated(By.name("username")));
         usernameField.sendKeys("LC");
         WebElement passwordField = driver.findElement(By.name("password"));
-        passwordField.sendKeys("Nucleus2022");
+        passwordField.sendKeys("Genpact2016");
     }
 
     public static void SubmitDetails() throws InterruptedException {
@@ -28,11 +25,6 @@ public class LoginPage extends BaseClass {
     }
 
     public void WaitForIndividualPageLoad() throws InterruptedException {
-        //Thread.sleep(20000);
-        //driver.switchTo().frame("lpSS_32791885408");
-        //utils.waitForCondition(presenceOfElementLocated(ByAngular.buttonText(" Client category and adviser ")),20);
-        //Utils utils = new Utils();
-        //utils.waitForCondition(presenceOfElementLocated(By.id("mat-select-value-1")),30);
         Thread.sleep(5000);
 
         WebElement shadowDomHostElement = driver.findElement(By.cssSelector(".webcomponent"));

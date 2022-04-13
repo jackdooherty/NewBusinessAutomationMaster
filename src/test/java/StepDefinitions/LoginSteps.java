@@ -8,30 +8,11 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
-import pageObjects.BaseClass;
+import platformAcceptance.BaseClass;
 import pageObjects.Login.LoginPage;
-import pageObjects.PageNavigation;
+import platformAcceptance.PageNavigation;
 
 public class LoginSteps extends BaseClass {
-
-    @Before
-    public void SetUp()
-    {
-        //BaseClass.setFireFoxDriver();
-        BaseClass.setChromeDriver();
-    }
-
-
-    @After
-    public void TearDown(Scenario scenario){
-        if (scenario.isFailed()) {
-            TakesScreenshot ts = (TakesScreenshot) driver;
-            byte[] src = ts.getScreenshotAs(OutputType.BYTES);
-            scenario.attach(src,"image/png","screenshot");
-        }
-
-        BaseClass.closeDriver();
-    }
 
     //Scenario 1
 

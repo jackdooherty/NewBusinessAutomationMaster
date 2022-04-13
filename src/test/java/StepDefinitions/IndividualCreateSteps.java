@@ -1,38 +1,17 @@
 package StepDefinitions;
 
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
-import io.cucumber.java.Scenario;
+import io.cucumber.java.bs.I;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import pageObjects.BaseClass;
+import platformAcceptance.BaseClass;
 import pageObjects.IndividualCreate.IndividualCreatePage;
 import pageObjects.Login.LoginPage;
-import pageObjects.PageNavigation;
+import platformAcceptance.PageNavigation;
 
 public class IndividualCreateSteps extends BaseClass{
 
-    @Before
-    public void SetUp()
-    {
-        //BaseClass.setFireFoxDriver();
-        BaseClass.setChromeDriver();
-    }
-
-    @After
-    public void TearDown(Scenario scenario){
-        if (scenario.isFailed()) {
-            TakesScreenshot ts = (TakesScreenshot) driver;
-            byte[] src = ts.getScreenshotAs(OutputType.BYTES);
-            scenario.attach(src,"image/png","screenshot");
-        }
-
-        BaseClass.closeDriver();
-    }
 
     @Given("a user logs in successfully")
     public void aUserLogsInSuccessfully() throws InterruptedException {
@@ -67,7 +46,7 @@ public class IndividualCreateSteps extends BaseClass{
     public void nationalityDetails() throws InterruptedException {
         IndividualCreatePage individualCreatePage = new IndividualCreatePage();
         individualCreatePage.selectNationalityResidencySection();
-        individualCreatePage.provideNationalityAndResidencyDetails();
+        individualCreatePage.provideNationalityAndResidencyDetailsOutwithUK();
     }
 
     @And("contact details")
@@ -107,5 +86,9 @@ public class IndividualCreateSteps extends BaseClass{
     }
 
 
-
+    @And("nationality details within the UK")
+    public void nationalityDetailsWithinTheUK() throws InterruptedException {
+        IndividualCreatePage individualCreatePage = new IndividualCreatePage();
+        individualCreatePage.provideNationalityDetailsWithinUk();
+    }
 }
