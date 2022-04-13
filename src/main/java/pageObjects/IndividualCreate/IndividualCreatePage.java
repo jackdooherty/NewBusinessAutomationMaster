@@ -244,9 +244,21 @@ public class IndividualCreatePage extends BaseClass {
 
         //National Insurance Number
         Random objGenerator = new Random();
-        int int1 = objGenerator.nextInt(999999);
-        String nationalNumber = String.valueOf(int1);
-        last.findElement(By.id("mat-input-19")).sendKeys("AC" + nationalNumber + "C");
+        int int1 = objGenerator.nextInt(9);
+        int int2 = objGenerator.nextInt(9);
+        int int3 = objGenerator.nextInt(9);
+        int int4 = objGenerator.nextInt(9);
+        int int5 = objGenerator.nextInt(9);
+        int int6 = objGenerator.nextInt(9);
+
+        String nn1 = String.valueOf(int1);
+        String nn2 = String.valueOf(int2);
+        String nn3 = String.valueOf(int3);
+        String nn4 = String.valueOf(int4);
+        String nn5 = String.valueOf(int5);
+        String nn6 = String.valueOf(int6);
+
+        last.findElement(By.id("mat-input-19")).sendKeys("AC" + nn1 + nn2 + nn3 + nn4 + nn5 + nn6 + "C");
         Thread.sleep(1000);
 
         last.findElement(By.id("mat-select-value-13")).click();
@@ -255,8 +267,8 @@ public class IndividualCreatePage extends BaseClass {
         Thread.sleep(1000);
 
         //Tax ID Number
-        int int2 = objGenerator.nextInt(11111111);
-        String idNumber = String.valueOf(int2);
+        int int7 = objGenerator.nextInt(11111111);
+        String idNumber = String.valueOf(int7);
         last.findElement(By.id("mat-input-24")).sendKeys(idNumber);
 
         last.findElement(By.id("mat-radio-9")).click();
