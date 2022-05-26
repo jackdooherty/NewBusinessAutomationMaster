@@ -1,15 +1,10 @@
 package StepDefinitions;
 
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
-import io.cucumber.java.Scenario;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import platformAcceptance.BaseClass;
 import pageObjects.Login.LoginPage;
+import platformAcceptance.BaseClass;
 import platformAcceptance.PageNavigation;
 
 public class LoginSteps extends BaseClass {
@@ -19,7 +14,7 @@ public class LoginSteps extends BaseClass {
     @Given("a user navigates to the home page")
     public void a_user_navigates_to_the_home_page() {
         PageNavigation pageNavigation = new PageNavigation();
-        pageNavigation.NavigateToIndividualCreate();
+        pageNavigation.navigateToIndividualCreate();
     }
 
     @When("they provide valid details")
@@ -46,20 +41,20 @@ public class LoginSteps extends BaseClass {
     @Given("a user navigates to the individual create page")
     public void a_user_navigates_to_the_individual_create_page() {
         PageNavigation pageNavigation = new PageNavigation();
-        pageNavigation.NavigateToIndividualCreate();
+        pageNavigation.navigateToIndividualCreate();
     }
 
-    @When("they provides invalid details")
-    public void they_provides_invalid_details() throws InterruptedException {
+
+    @When("they provide invalid details")
+    public void theyProvideInvalidDetails() throws InterruptedException {
         LoginPage loginPage = new LoginPage();
         loginPage.provideInvalidDetails();
         loginPage.SubmitDetails();
     }
 
-    @Then("they should see an error message displayed")
-    public void they_should_see_an_error_message_displayed() throws InterruptedException {
+    @Then("they should be presented with an error message")
+    public void theyShouldBePresentedWithAnErrorMessage() throws InterruptedException {
         LoginPage loginPage = new LoginPage();
-        loginPage.waitForLoginError();
+        loginPage.checkLoginPageUrl();
     }
-
 }

@@ -1,13 +1,12 @@
 package StepDefinitions;
 
-import io.cucumber.java.bs.I;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import platformAcceptance.BaseClass;
 import pageObjects.IndividualCreate.IndividualCreatePage;
 import pageObjects.Login.LoginPage;
+import platformAcceptance.BaseClass;
 import platformAcceptance.PageNavigation;
 
 public class IndividualCreateSteps extends BaseClass{
@@ -16,7 +15,7 @@ public class IndividualCreateSteps extends BaseClass{
     @Given("a user logs in successfully")
     public void aUserLogsInSuccessfully() throws InterruptedException {
         PageNavigation pageNavigation = new PageNavigation();
-        pageNavigation.NavigateToIndividualCreate();
+        pageNavigation.navigateToIndividualCreate();
 
         LoginPage loginPage = new LoginPage();
         loginPage.provideValidDetails();
@@ -39,7 +38,13 @@ public class IndividualCreateSteps extends BaseClass{
     public void personalDetails() throws InterruptedException {
         IndividualCreatePage individualCreatePage = new IndividualCreatePage();
         individualCreatePage.selectPersonalDetailsSection();
-        individualCreatePage.providePersonalDetails();
+        individualCreatePage.provideGenericPersonalDetails();
+    }
+
+    @And("nationality details within a tax residency outwith the UK")
+    public void nationalityDetailsWithinATaxResidencyOutwithTheUK() {
+        IndividualCreatePage individualCreatePage = new IndividualCreatePage();
+        individualCreatePage.provideNationalityAndResidencyDetailsOutwithUK();
     }
 
     @And("nationality details")
@@ -91,4 +96,11 @@ public class IndividualCreateSteps extends BaseClass{
         IndividualCreatePage individualCreatePage = new IndividualCreatePage();
         individualCreatePage.provideNationalityDetailsWithinUk();
     }
+
+    @And("personal details with an age over {int}")
+    public void personalDetailsWithAnAgeOver(int arg0) {
+        IndividualCreatePage individualCreatePage = new IndividualCreatePage();
+        individualCreatePage.personalDetailsOverSeventyFive();
+    }
+
 }

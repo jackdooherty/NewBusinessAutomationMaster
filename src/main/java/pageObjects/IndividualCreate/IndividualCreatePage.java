@@ -9,7 +9,7 @@ import org.openqa.selenium.support.FindBy;
 import platformAcceptance.BaseClass;
 
 import java.util.Random;
-
+import java.util.concurrent.TimeUnit;
 
 
 public class IndividualCreatePage extends BaseClass {
@@ -175,72 +175,87 @@ public class IndividualCreatePage extends BaseClass {
     private WebElement applyButton;
 
 
-    public void selectClientAdviser() throws InterruptedException
+    public void selectClientAdviser()
     {
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         WebElement shadowDomHostElement = driver.findElement(By.cssSelector(".webcomponent"));
         SearchContext last = (SearchContext) ((JavascriptExecutor) driver).executeScript("return arguments[0].shadowRoot", shadowDomHostElement);
 
-        Thread.sleep(2000);
         last.findElement(By.id("mat-select-value-1")).click();
-        Thread.sleep(1000);
         last.findElement(By.id("mat-option-114")).click();
     }
 
-    public void selectPersonalDetailsSection() throws InterruptedException
-    {
+    public void selectPersonalDetailsSection() throws InterruptedException {
+        Thread.sleep(1000);
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         WebElement shadowDomHostElement = driver.findElement(By.cssSelector(".webcomponent"));
         SearchContext last = (SearchContext) ((JavascriptExecutor) driver).executeScript("return arguments[0].shadowRoot", shadowDomHostElement);
 
-        Thread.sleep(1000);
         last.findElement(By.cssSelector("[data-testid='menu-personal-li']")).click();
-        Thread.sleep(1000);
     }
 
-    public void providePersonalDetails() throws InterruptedException
+    public void provideGenericPersonalDetails()
     {
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         WebElement shadowDomHostElement = driver.findElement(By.cssSelector(".webcomponent"));
         SearchContext last = (SearchContext) ((JavascriptExecutor) driver).executeScript("return arguments[0].shadowRoot", shadowDomHostElement);
 
-        Thread.sleep(1000);
         last.findElement(By.id("mat-select-value-3")).click();
-        Thread.sleep(1000);
         last.findElement(By.id("mat-option-5")).click();
-        Thread.sleep(1000);
 
         last.findElement(By.id("mat-input-0")).sendKeys("Test");
         last.findElement(By.id("mat-input-2")).sendKeys("Junior");
 
-        Thread.sleep(1000);
-
         last.findElement(By.id("mat-radio-4")).click();
 
         last.findElement(By.id("mat-select-4")).click();
-        Thread.sleep(1000);
 
         last.findElement(By.id("mat-option-35")).click();
-        Thread.sleep(1000);
 
         last.findElement(By.id("date-input-0_day")).sendKeys("05");
         last.findElement(By.id("date-input-0_month")).sendKeys("05");
         last.findElement(By.id("date-input-0_year")).sendKeys("1990");
     }
 
-    public void selectNationalityResidencySection() throws InterruptedException {
+    public void personalDetailsOverSeventyFive()
+    {
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         WebElement shadowDomHostElement = driver.findElement(By.cssSelector(".webcomponent"));
         SearchContext last = (SearchContext) ((JavascriptExecutor) driver).executeScript("return arguments[0].shadowRoot", shadowDomHostElement);
 
-        Thread.sleep(1000);
-        last.findElement(By.cssSelector("[data-testid='menu-nationality-li']")).click();
-        Thread.sleep(1000);
+        last.findElement(By.id("mat-select-value-3")).click();
+        last.findElement(By.id("mat-option-5")).click();
+
+        last.findElement(By.id("mat-input-0")).sendKeys("Test");
+        last.findElement(By.id("mat-input-2")).sendKeys("Junior");
+
+        last.findElement(By.id("mat-radio-4")).click();
+
+        last.findElement(By.id("mat-select-4")).click();
+
+        last.findElement(By.id("mat-option-35")).click();
+
+        last.findElement(By.id("date-input-0_day")).sendKeys("05");
+        last.findElement(By.id("date-input-0_month")).sendKeys("04");
+        last.findElement(By.id("date-input-0_year")).sendKeys("1946");
     }
 
-    public void provideNationalityAndResidencyDetailsOutwithUK() throws InterruptedException {
+    public void selectNationalityResidencySection()
+    {
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        WebElement shadowDomHostElement = driver.findElement(By.cssSelector(".webcomponent"));
+        SearchContext last = (SearchContext) ((JavascriptExecutor) driver).executeScript("return arguments[0].shadowRoot", shadowDomHostElement);
+
+        last.findElement(By.cssSelector("[data-testid='menu-nationality-li']")).click();
+    }
+
+    public void provideNationalityAndResidencyDetailsOutwithUK()
+    {
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         WebElement shadowDomHostElement = driver.findElement(By.cssSelector(".webcomponent"));
         SearchContext last = (SearchContext) ((JavascriptExecutor) driver).executeScript("return arguments[0].shadowRoot", shadowDomHostElement);
 
         last.findElement(By.id("mat-input-19")).click();
-
-        //Change test
 
         //National Insurance Number
         Random objGenerator = new Random();
@@ -259,12 +274,9 @@ public class IndividualCreatePage extends BaseClass {
         String nn6 = String.valueOf(int6);
 
         last.findElement(By.id("mat-input-19")).sendKeys("AC" + nn1 + nn2 + nn3 + nn4 + nn5 + nn6 + "C");
-        Thread.sleep(1000);
 
         last.findElement(By.id("mat-select-value-13")).click();
-        Thread.sleep(1000);
         last.findElement(By.id("mat-option-81")).click();
-        Thread.sleep(1000);
 
         //Tax ID Number
         int int7 = objGenerator.nextInt(11111111);
@@ -275,7 +287,9 @@ public class IndividualCreatePage extends BaseClass {
         last.findElement(By.id("mat-checkbox-19")).click();
     }
 
-    public void provideNationalityDetailsWithinUk() throws InterruptedException {
+    public void provideNationalityDetailsWithinUk()
+    {
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         WebElement shadowDomHostElement = driver.findElement(By.cssSelector(".webcomponent"));
         SearchContext last = (SearchContext) ((JavascriptExecutor) driver).executeScript("return arguments[0].shadowRoot", shadowDomHostElement);
 
@@ -283,10 +297,21 @@ public class IndividualCreatePage extends BaseClass {
 
         //National Insurance Number
         Random objGenerator = new Random();
-        int int1 = objGenerator.nextInt(999999);
-        String nationalNumber = String.valueOf(int1);
-        last.findElement(By.id("mat-input-19")).sendKeys("AC" + nationalNumber + "C");
-        Thread.sleep(1000);
+        int int1 = objGenerator.nextInt(9);
+        int int2 = objGenerator.nextInt(9);
+        int int3 = objGenerator.nextInt(9);
+        int int4 = objGenerator.nextInt(9);
+        int int5 = objGenerator.nextInt(9);
+        int int6 = objGenerator.nextInt(9);
+
+        String nn1 = String.valueOf(int1);
+        String nn2 = String.valueOf(int2);
+        String nn3 = String.valueOf(int3);
+        String nn4 = String.valueOf(int4);
+        String nn5 = String.valueOf(int5);
+        String nn6 = String.valueOf(int6);
+
+        last.findElement(By.id("mat-input-19")).sendKeys("AC" + nn1 + nn2 + nn3 + nn4 + nn5 + nn6 + "C");
 
         WebElement taxResidency = last.findElement(By.cssSelector("[data-testid='tax-residency-select']"));
         String expectedTaxResidency = "United Kingdom";
@@ -297,39 +322,36 @@ public class IndividualCreatePage extends BaseClass {
         Assert.assertEquals(countryOfResidence.getText(), expectedCountryResidency);
     }
 
-    public void selectContactDetailsSection() throws InterruptedException {
+    public void selectContactDetailsSection()
+    {
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         WebElement shadowDomHostElement = driver.findElement(By.cssSelector(".webcomponent"));
         SearchContext last = (SearchContext) ((JavascriptExecutor) driver).executeScript("return arguments[0].shadowRoot", shadowDomHostElement);
 
-        Thread.sleep(4000);
         last.findElement(By.cssSelector("[data-testid='menu-contact-li']")).click();
     }
 
-    public void provideContactDetails() throws InterruptedException
-    {
+    public void provideContactDetails() throws InterruptedException {
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         WebElement shadowDomHostElement = driver.findElement(By.cssSelector(".webcomponent"));
         SearchContext last = (SearchContext) ((JavascriptExecutor) driver).executeScript("return arguments[0].shadowRoot", shadowDomHostElement);
 
-        Thread.sleep(2000);
         last.findElement(By.id("mat-input-9")).sendKeys("G78 2PN");
-        Thread.sleep(1000);
         last.findElement(By.cssSelector("[data-testid='find-address-button']")).click();
+        Thread.sleep(2000);
 
-        Thread.sleep(3000);
         last.findElement(By.id("mat-select-14")).click();
+        Thread.sleep(2000);
+        last.findElement(By.id("mat-option-4451")).click();
+        Thread.sleep(1000);
 
         //WebDriverWait wait = new WebDriverWait(driver, 10);
         //wait.until(ExpectedConditions.elementToBeClickable(addressOptions));
         //addressOptions.click();
 
-        Thread.sleep(1000);
-        last.findElement(By.id("mat-option-4451")).click();
-        Thread.sleep(500);
-
         last.findElement(By.id("mat-select-value-9")).click();
-        Thread.sleep(500);
+        Thread.sleep(1000);
         last.findElement(By.id("mat-option-1")).click();
-        Thread.sleep(500);
 
         //House Phone Number
         Random objGenerator = new Random();
@@ -341,17 +363,18 @@ public class IndividualCreatePage extends BaseClass {
         last.findElement(By.id("mat-input-11")).sendKeys("test1@gmail.com");
     }
 
-    public void selectBankAccountDetailsSection() throws InterruptedException {
+    public void selectBankAccountDetailsSection()
+    {
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         WebElement shadowDomHostElement = driver.findElement(By.cssSelector(".webcomponent"));
         SearchContext last = (SearchContext) ((JavascriptExecutor) driver).executeScript("return arguments[0].shadowRoot", shadowDomHostElement);
 
-        Thread.sleep(1000);
         last.findElement(By.cssSelector("[data-testid='menu-bankAccount-li']"));
-        Thread.sleep(1000);
     }
 
     public void provideBankAccountDetails()
     {
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         WebElement shadowDomHostElement = driver.findElement(By.cssSelector(".webcomponent"));
         SearchContext last = (SearchContext) ((JavascriptExecutor) driver).executeScript("return arguments[0].shadowRoot", shadowDomHostElement);
 
@@ -364,64 +387,81 @@ public class IndividualCreatePage extends BaseClass {
         last.findElement(By.id("mat-input-13")).sendKeys("09090909");
     }
 
-    public void selectNucleusGoSection() throws InterruptedException
+    public void selectNucleusGoSection()
     {
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         WebElement shadowDomHostElement = driver.findElement(By.cssSelector(".webcomponent"));
         SearchContext last = (SearchContext) ((JavascriptExecutor) driver).executeScript("return arguments[0].shadowRoot", shadowDomHostElement);
 
-        Thread.sleep(1000);
         last.findElement(By.cssSelector("[data-testid='menu-bankAccount-li']"));
     }
 
-    public void selectNucleusGoAccess() throws InterruptedException
+    public void selectNucleusGoAccess()
     {
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         WebElement shadowDomHostElement = driver.findElement(By.cssSelector(".webcomponent"));
         SearchContext last = (SearchContext) ((JavascriptExecutor) driver).executeScript("return arguments[0].shadowRoot", shadowDomHostElement);
 
-        Thread.sleep(1000);
         last.findElement(By.id("mat-checkbox-2")).isSelected();
         last.findElement(By.id("mat-checkbox-3")).isSelected();
         last.findElement(By.id("mat-checkbox-4")).click();
     }
 
-    public void selectCorrespondencePreferencesSection() throws InterruptedException {
+    public void selectCorrespondencePreferencesSection()
+    {
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         WebElement shadowDomHostElement = driver.findElement(By.cssSelector(".webcomponent"));
         SearchContext last = (SearchContext) ((JavascriptExecutor) driver).executeScript("return arguments[0].shadowRoot", shadowDomHostElement);
 
-        Thread.sleep(1000);
         last.findElement(By.cssSelector("[data-testid='menu-correspondence-li']")).click();
     }
 
-    public void selectAllCorrespondence() throws InterruptedException {
+    public void selectAllCorrespondence()
+    {
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         WebElement shadowDomHostElement = driver.findElement(By.cssSelector(".webcomponent"));
         SearchContext last = (SearchContext) ((JavascriptExecutor) driver).executeScript("return arguments[0].shadowRoot", shadowDomHostElement);
 
         last.findElement(By.id("mat-checkbox-6")).click();
-        Thread.sleep(1000);
     }
 
-    public void selectNext() throws InterruptedException {
+    public void selectNext()
+    {
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         WebElement shadowDomHostElement = driver.findElement(By.cssSelector(".webcomponent"));
         SearchContext last = (SearchContext) ((JavascriptExecutor) driver).executeScript("return arguments[0].shadowRoot", shadowDomHostElement);
 
-        Thread.sleep(2000);
         last.findElement(By.cssSelector("[data-testid='next-button']")).click();
     }
 
-    public void applyApplication() throws InterruptedException {
+    public void applyApplication()
+    {
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         WebElement shadowDomHostElement = driver.findElement(By.cssSelector(".webcomponent"));
         SearchContext last = (SearchContext) ((JavascriptExecutor) driver).executeScript("return arguments[0].shadowRoot", shadowDomHostElement);
 
-        Thread.sleep(2000);
         last.findElement(By.cssSelector("[data-testid='menu-summary-button']")).click();
     }
 
     public void waitForSuccessMessage() throws InterruptedException {
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         WebElement shadowDomHostElement = driver.findElement(By.cssSelector(".webcomponent"));
         SearchContext last = (SearchContext) ((JavascriptExecutor) driver).executeScript("return arguments[0].shadowRoot", shadowDomHostElement);
 
-        Thread.sleep(2000);
         last.findElement(By.cssSelector("[data-testid='menu-start-app-button']")).isDisplayed();
+        Thread.sleep(3000);
+
+        //last.findElement(By.xpath("//SPAN[@class='alert-message-text-wrap-ng-tns-c150-0']")).isDisplayed();
+
+        //last.findElement(By.xpath("//div[@class='d-flex align-items-center ng-tns-c150-0 ng-star-inserted']/span[@class='alert-message text-wrap ng-tns-c150-0']")).isDisplayed();
+
+        //last.findElement(By.xpath("//div[@class='d-flex align-items-center ng-tns-c150-0 ng-star-inserted']")).isDisplayed();
+
+        //
+        // last.findElement(By.xpath("//sc-alert-area[@class='ng-tns-c150-0 ng-star-inserted sc-alert-visible']")).isDisplayed();
+
+        //String clientReferenceAlert = driver.switchTo().alert().getText();
+        //System.out.println(clientReferenceAlert);
     }
 
 }

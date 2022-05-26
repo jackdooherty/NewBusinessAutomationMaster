@@ -1,12 +1,27 @@
 package platformAcceptance;
 
-import platformAcceptance.BaseClass;
-
 public class PageNavigation extends BaseClass {
 
-    public void NavigateToIndividualCreate()
+    public void navigateToIndividualCreate()
     {
-        driver.get("https://nucsondev1.nuc.bslcloud.com/remoh/ria/client/create-component?type=individual");
+        driver.get("https://nucsonuat2.nuc.bslcloud.com/remoh/ria/client/create-component?type=individual");
     }
+
+    public void navigateToCompanyCreate()
+    {
+        driver.get("");
+    }
+
+    public void navigateToTrustCreate()
+    {
+        driver.get("https://nucsonuat2.nuc.bslcloud.com/remoh/ria/client/create-component?type=trust");
+    }
+
+    public void navigateToViewAndEdit()
+    {
+        driver.get("");
+    }
+
+
 
 }
