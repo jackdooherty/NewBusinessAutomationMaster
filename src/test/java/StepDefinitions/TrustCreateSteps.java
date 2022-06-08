@@ -18,9 +18,8 @@ public class TrustCreateSteps extends BaseClass {
                 Thread.sleep(2000);
         }
 
-        @When("the user provided valid Trust client details")
-        public void theUserProvidedValidTrustClientDetails() throws InterruptedException
-        {
+        @When("the user provides valid Trust client details")
+        public void theUserProvidesValidTrustClientDetails() throws InterruptedException {
                 trustCreatePage.selectClientAdviser();
         }
 

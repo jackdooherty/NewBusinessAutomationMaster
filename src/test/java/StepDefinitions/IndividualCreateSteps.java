@@ -15,7 +15,7 @@ public class IndividualCreateSteps extends BaseClass{
     @Given("a user logs in successfully")
     public void aUserLogsInSuccessfully() throws InterruptedException {
         PageNavigation pageNavigation = new PageNavigation();
-        pageNavigation.navigateToIndividualCreate();
+        pageNavigation.navigateToHomePage();
 
         LoginPage loginPage = new LoginPage();
         loginPage.provideValidDetails();
@@ -24,6 +24,9 @@ public class IndividualCreateSteps extends BaseClass{
 
     @And("arrives on the Individual create page")
     public void arrivesOnTheIndividualCreatePage() throws InterruptedException {
+        PageNavigation pageNavigation = new PageNavigation();
+        pageNavigation.navigateToIndividualCreate();
+
         LoginPage loginPage = new LoginPage();
         loginPage.WaitForIndividualPageLoad();
     }

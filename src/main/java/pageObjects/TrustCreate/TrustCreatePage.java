@@ -17,6 +17,8 @@ public class TrustCreatePage extends BaseClass {
         WebElement shadowDomHostElement = driver.findElement(By.cssSelector(".webcomponent"));
         SearchContext last = (SearchContext) ((JavascriptExecutor) driver).executeScript("return arguments[0].shadowRoot", shadowDomHostElement);
 
+        Thread.sleep(2000);
+
         //Client adviser field
         last.findElement(By.id("mat-select-value-1")).click();
         Thread.sleep(1000);
@@ -35,18 +37,26 @@ public class TrustCreatePage extends BaseClass {
 
     public static String generateTrustName(int len)
     {
-            String chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijk";
+            String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            String randomString = "";
             Random rnd = new Random();
-            StringBuilder sb = new StringBuilder(len);
-            for (int i = 0; i < len; i++)
-                sb.append(chars.charAt(rnd.nextInt(chars.length())));
-            return sb.toString();
+
+            char[] text = new char[len];
+
+            for(int i = 0; i < len; i++)
+            {
+                text[i] = chars.charAt(rnd.nextInt(chars.length()));
+            }
+
+        return randomString;
     }
 
     public void discountedTrustDetailsWithinUk() throws InterruptedException {
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         WebElement shadowDomHostElement = driver.findElement(By.cssSelector(".webcomponent"));
         SearchContext last = (SearchContext) ((JavascriptExecutor) driver).executeScript("return arguments[0].shadowRoot", shadowDomHostElement);
+
+        Thread.sleep(2000);
 
         //Trust Details Name
         last.findElement(By.id("mat-input-0")).sendKeys(generateTrustName(8) + "Ltd");
@@ -102,7 +112,7 @@ public class TrustCreatePage extends BaseClass {
         //Johns Jodi - 100000581 - Individual
         last.findElement(By.id("mat-option-4768")).click();
 
-        Thread.sleep(2000);
+        Thread.sleep(1000);
 
         WebElement typeTrustee = last.findElement(By.cssSelector("[data-testid='beneficial-owners-client-type-0-sc-label']"));
         WebElement firstNameTrustee = last.findElement(By.cssSelector("[data-testid='beneficial-owners-first-name-0-sc-label']"));
@@ -139,7 +149,7 @@ public class TrustCreatePage extends BaseClass {
         //Robbins John - 100000580 - Individual
         last.findElement(By.id("mat-option-4848")).click();
 
-        Thread.sleep(2000);
+        Thread.sleep(1000);
 
         WebElement typeSettlor = last.findElement(By.cssSelector("[data-testid='beneficial-owners-client-type-0-form-field']"));
         WebElement firstNameSettlor = last.findElement(By.cssSelector("[data-testid='beneficial-owners-first-name-0-sc-label']"));

@@ -2,6 +2,11 @@ package platformAcceptance;
 
 public class PageNavigation extends BaseClass {
 
+    public void navigateToHomePage()
+    {
+        driver.get("https://nucsonuat2.nuc.bslcloud.com/remoh/ria/advisor/home");
+    }
+
     public void navigateToIndividualCreate()
     {
         driver.get("https://nucsonuat2.nuc.bslcloud.com/remoh/ria/client/create-component?type=individual");

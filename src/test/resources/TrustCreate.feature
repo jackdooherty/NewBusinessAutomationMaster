@@ -5,7 +5,7 @@ Feature: Trust Create page
     And arrives on the Trust create page
 
   Scenario: : User creates a Trust client based in the UK
-      When the user provided valid Trust client details
+      When the user provides valid Trust client details
       And valid trust details
       And searches for an existing Individual Trustee
       And searches for an existing Individual Settlor

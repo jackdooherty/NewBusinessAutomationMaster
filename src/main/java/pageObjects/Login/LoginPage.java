@@ -52,7 +52,7 @@ public class LoginPage extends BaseClass {
     {
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         String URL = driver.getCurrentUrl();
-        Assert.assertEquals(URL, "https://nucsondev1.nuc.bslcloud.com/remoh/ria/client/j_security_check" );
+        Assert.assertEquals(URL, "https://nucsonuat2.nuc.bslcloud.com/remoh/ria/client/j_security_check" );
     }
 
 }
