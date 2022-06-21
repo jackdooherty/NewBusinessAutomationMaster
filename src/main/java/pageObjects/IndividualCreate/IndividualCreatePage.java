@@ -214,7 +214,7 @@ public class IndividualCreatePage extends BaseClass {
 
         last.findElement(By.id("date-input-0_day")).sendKeys("05");
         last.findElement(By.id("date-input-0_month")).sendKeys("05");
-        last.findElement(By.id("date-input-0_year")).sendKeys("1990");
+        last.findElement(By.id("date-input-0_year")).sendKeys("1965");
     }
 
     public void personalDetailsOverSeventyFive()
